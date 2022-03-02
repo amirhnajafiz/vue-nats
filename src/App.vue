@@ -6,7 +6,7 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import axios from "axios";
+import login from "./api/login"
 
 export default {
   name: 'App',
@@ -19,11 +19,7 @@ export default {
     HelloWorld
   },
   created() {
-    axios
-      .get('http://localhost:3000/api/')
-      .then(response => (
-          this.info = response.data
-      ))
+    login(this.info, this.info)
   }
 }
 </script>
