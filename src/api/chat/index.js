@@ -3,7 +3,7 @@ import axios from "axios";
 let URL = "";
 
 function allChats(username, jwt) {
-    URL = URL + '?' + 'username=' + username + '&' + 'jwt=' + jwt
+    URL = URL + '?' + 'username=' + username + '&' + 'jwt=' + jwt;
 
     let data = undefined;
 
