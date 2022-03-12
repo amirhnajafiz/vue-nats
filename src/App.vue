@@ -1,23 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <p> {{ info }} </p>
-  <router-view />
+  <div class="container">
+    <navigation />
+    <p>{{ info }}</p>
+    <router-view />
+  </div>
 </template>
 
 <script>
-import login from "./api/login"
+import login from "./api/login";
+import Navigation from "./components/Navigation.vue";
 
 export default {
-  name: 'App',
+  components: { Navigation },
+  name: "App",
   data() {
-    return{
-      info: "test"
-    }
+    return {
+      info: "test",
+    };
   },
   created() {
-    login(this.info, this.info)
-  }
-}
+    login(this.info, this.info);
+  },
+};
 </script>
 
 <style>
@@ -28,5 +32,12 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.container {
+  margin: 0;
+  padding: 10px;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, rgb(0, 255, 200), rgb(253, 253, 253));
 }
 </style>
