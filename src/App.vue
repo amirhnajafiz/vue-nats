@@ -6,6 +6,7 @@
 </template>
 
 <script>
+// TODO: refactor the whole app
 import login from "./api/login";
 import Navigation from "./components/Navigation.vue";
 

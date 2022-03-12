@@ -2,6 +2,7 @@ import axios from "axios";
 
 let URL = "";
 
+// TODO: set a url for message sending over nats
 function publish(username, jwt) {
     URL = URL + '?' + 'username=' + username + '&' + 'jwt=' + jwt;
 

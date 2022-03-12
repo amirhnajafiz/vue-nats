@@ -2,6 +2,7 @@ import axios from "axios";
 
 let URL = "";
 
+// TODO: set a request to get all of the messages from db
 function allChats(username, jwt) {
     URL = URL + '?' + 'username=' + username + '&' + 'jwt=' + jwt;
 

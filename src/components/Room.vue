@@ -97,6 +97,7 @@ export default {
 </script>
 
 <style scoped>
+/* TODO: refactor and rename css styles */
 .main-panel {
   background-color: #fff;
   padding: 10px;

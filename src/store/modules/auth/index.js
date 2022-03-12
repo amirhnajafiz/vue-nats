@@ -1,3 +1,4 @@
+// TODO: refactor and comment and documentations
 const state = {
     user: null,
     jwt: null,

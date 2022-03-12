@@ -3,6 +3,7 @@ import store from '../store'
 import Login from "../containers/Login"
 import Chat from "../containers/Chat"
 
+// TODO: comments and documentatons please
 const routes = [
     {
         path: "/",

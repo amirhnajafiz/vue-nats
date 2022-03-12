@@ -11,11 +11,7 @@
 <script>
 import Room from '../components/Room.vue'
 export default {
+  name: "chat",
   components: { Room },
-
 }
 </script>
-
-<style>
-
-</style>

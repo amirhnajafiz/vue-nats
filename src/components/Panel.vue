@@ -41,6 +41,7 @@ export default {
             document.getElementById("password").innerText = "";
         },
         join() {
+            // TODO: check the login method
             let res = login(this.username, this.password)
             if (res.status) {
                 store.commit('Login', this.username, res.jwt)
@@ -53,7 +54,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped> 
+/* TODO: css refactor and rename */
 .panel-container {
     width: 50%;
     margin: 10px auto;
