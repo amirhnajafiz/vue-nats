@@ -16,7 +16,7 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 app.mount('#app')
 
 app.use(vueNats, {
-    url: 'ws://<nats-wesocket-relay>:8080',
+    url: process.env.NATS_HOST,
     json: true, // use JSON data payload
     reconnect: false, // always reconnect
     maxReconnectAttempts: -1, // retry forever
