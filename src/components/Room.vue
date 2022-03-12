@@ -26,7 +26,7 @@
               <button class="send">
                   Send
               </button>
-              <button class="exit">
+              <button v-on:click="exit()" class="exit">
                   Exit room
               </button>
           </div>
@@ -35,6 +35,8 @@
 </template>
 
 <script>
+import store from '../store'
+
 export default {
     name: "Room",
     data() {
@@ -79,6 +81,15 @@ export default {
             ],
             message: ""
         }
+    },
+    methods: {
+        exit() {
+            store.commit('Logout')
+            this.$router.push("/")
+        }
+    },
+    mounted: {
+        // TODO: request for all messages
     }
 }
 </script>
