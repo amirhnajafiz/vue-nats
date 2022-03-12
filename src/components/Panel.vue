@@ -23,6 +23,7 @@
 
 <script>
 import login from "../api/login"
+import store from "../store"
 
 export default {
     name: "panel",
@@ -40,8 +41,11 @@ export default {
             document.getElementById("password").innerText = "";
         },
         join() {
-            login(this.username, this.password)
-            this.$router.push("/chat")
+            let res = login(this.username, this.password)
+            if (res.status) {
+                store.commit('Login', this.username, res.jwt)
+                this.$router.push("/chat")
+            }
         }
     }
 }
