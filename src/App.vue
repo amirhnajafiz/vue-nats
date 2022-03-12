@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <navigation />
-    <p>{{ info }}</p>
     <router-view />
   </div>
 </template>
