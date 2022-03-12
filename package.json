@@ -14,6 +14,7 @@
     "dns": "^0.2.2",
     "nats": "^2.6.1",
     "vue": "^3.0.0",
+    "vue-nats": "^1.1.9",
     "vue-router": "^4.0.14",
     "vuex": "^4.0.2",
     "vuex-persistedstate": "^4.1.0"
