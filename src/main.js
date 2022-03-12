@@ -1,13 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import axios from "axios"
-import { createRouter, createWebHashHistory } from 'vue-router'
+import router from './router'
 
-
-const router = createRouter({
-    history: createWebHashHistory(),
-    routes: [],
-})
 
 const app = createApp(App)
 app.use(router)
