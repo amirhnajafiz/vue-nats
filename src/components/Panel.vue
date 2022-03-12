@@ -10,7 +10,7 @@
               <input id="password" type="password" v-model="password" placeholder="Password ..." />
           </div>
           <div class="form-row more-margin">
-              <button class="btn join">
+              <button class="btn join" v-on:click="join()">
                   Join
               </button>
               <button class="btn reset" v-on:click="clear()">
@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import login from "../api/login"
+
 export default {
     name: "panel",
     data() {
@@ -37,8 +39,8 @@ export default {
             document.getElementById("name").innerText = "";
             document.getElementById("password").innerText = "";
         },
-        login() {
-            
+        join() {
+            login(this.username, this.password)
         }
     }
 }

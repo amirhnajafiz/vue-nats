@@ -8,14 +8,16 @@ function login(username, password) {
         "password": password
     };
 
+    console.log(data);
+
     axios
       .post(URL, data)
-      .then(response => (
+      .then(response => {
           console.log(response.data)
-      ))
+      })
       .catch(error => {
           console.error(error)
-          console.log("Problem in logging int")
+          console.log("Problem in logging in")
       })
 }
 
