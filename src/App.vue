@@ -1,11 +1,9 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
   <p> {{ info }} </p>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import login from "./api/login"
 
 export default {
@@ -14,9 +12,6 @@ export default {
     return{
       info: "test"
     }
-  },
-  components: {
-    HelloWorld
   },
   created() {
     login(this.info, this.info)
