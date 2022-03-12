@@ -1,7 +1,8 @@
 <template>
   <div>
       <div class="main-panel">
-          <div v-for="chat in chats" :key="chat.id" class="row">
+          <div class="holder">
+              <div v-for="chat in chats" :key="chat.id" class="row">
               <div class="full-flex">
                   <div class="circle">
                       <span>
@@ -18,6 +19,16 @@
               <small class="small-text">
                   {{ chat.date }}
               </small>
+          </div>
+          </div>
+          <div class="input-line">
+              <input type="text" v-model="message" placeholder="Type something ..." />
+              <button class="send">
+                  Send
+              </button>
+              <button class="exit">
+                  Exit room
+              </button>
           </div>
       </div>
   </div>
@@ -65,7 +76,8 @@ export default {
                     message: "hi",
                     date: new Date(),
                 }
-            ]
+            ],
+            message: ""
         }
     }
 }
@@ -78,7 +90,10 @@ export default {
     border-radius: 5px;
     width: 80%;
     margin: 10px auto;
-    height: 600px;
+}
+
+.holder {
+    height: 500px;
     overflow: scroll;
 }
 
@@ -113,5 +128,51 @@ export default {
 
 .small-text {
     font-size: 0.5em;
+}
+
+.input-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+input {
+    flex-grow: 2;
+    padding: 10px;
+    outline: none;
+    border: 1px solid gainsboro;
+}
+
+input:hover, input:focus {
+    border: 1px solid gray;
+}
+
+.send, .exit {
+    border: 0px solid black;
+    outline: none;
+}
+
+.send {
+    border: 1px solid rgb(0, 64, 99);
+    background: rgb(0, 64, 99);
+    color: #fff;
+}
+
+.send:hover {
+    border-color: rgb(0, 52, 80);
+    background: rgb(0, 52, 80);
+}
+
+.exit {
+    border: 1px solid rgb(140, 0, 0);
+    background: rgb(140, 0, 0);
+    color: #fff;
+}
+
+.exit:hover {
+    border-color: rgb(100, 0, 0);
+    background: rgb(100, 0, 0);
 }
 </style>

@@ -2,7 +2,7 @@
   <div>
       <!-- chat page -->
       <h1>
-        This is chat page
+        Welcome to the Room
       </h1>
       <room />
   </div>
