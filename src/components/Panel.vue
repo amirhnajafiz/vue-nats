@@ -45,6 +45,8 @@ export default {
             if (res.status) {
                 store.commit('Login', this.username, res.jwt)
                 this.$router.push("/chat")
+            } else {
+                alert('cannot login')
             }
         }
     }
