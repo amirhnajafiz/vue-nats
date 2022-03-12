@@ -41,6 +41,7 @@ export default {
         },
         join() {
             login(this.username, this.password)
+            this.$router.push("/chat")
         }
     }
 }
