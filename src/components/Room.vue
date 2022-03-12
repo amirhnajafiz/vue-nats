@@ -86,6 +86,12 @@ export default {
   },
   mounted() {
     // TODO: request for all messages
+    
+    // subscribe to all server IDs
+    this.$nats.subscribe('topic', (event) => {
+      console.log('Server reading:', event);
+      this.chats.append(event)
+    });
   },
 };
 </script>
