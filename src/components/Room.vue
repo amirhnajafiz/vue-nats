@@ -1,189 +1,214 @@
 <template>
   <div>
-      <div class="main-panel">
-          <div class="holder">
-              <div v-for="chat in chats" :key="chat.id" class="row">
-              <div class="full-flex">
-                  <div class="circle">
-                      <span>
-                          {{ chat.sender.split(' ').slice(0, 2).join(' ').toUpperCase() }}
-                      </span>
-                  </div>
-                  <small>
-                      {{ chat.sender }}
-                  </small>
-              </div>
-              <p>
-                  {{ chat.message }}
-              </p> 
-              <small class="small-text">
-                  {{ chat.date }}
-              </small>
+    <div class="main-panel">
+      <div class="holder">
+        <div v-for="chat in chats" :key="chat.id" class="row">
+          <div class="full-flex">
+            <div class="circle">
+              <span>
+                {{ chat.sender.split(" ").slice(0, 2).join(" ").toUpperCase() }}
+              </span>
+            </div>
+            <small>
+              {{ chat.sender }}
+            </small>
           </div>
-          </div>
-          <div class="input-line">
-              <input type="text" v-model="message" placeholder="Type something ..." />
-              <button class="send">
-                  Send
-              </button>
-              <button v-on:click="exit()" class="exit">
-                  Exit room
-              </button>
-          </div>
+          <p>
+            {{ chat.message }}
+          </p>
+          <small class="small-text">
+            {{ chat.date }}
+          </small>
+        </div>
       </div>
+      <div class="input-line">
+        <input type="text" v-model="message" placeholder="Type something ..." />
+        <button class="send">Send</button>
+        <button v-on:click="exit()" class="exit">Exit room</button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import store from '../store'
+import store from "../store";
+import { connect, StringCodec } from "nats";
 
 export default {
-    name: "Room",
-    data() {
-        return {
-            chats: [
-                {
-                    id: "1",
-                    sender: "me",
-                    message: "hi",
-                    date: new Date(),
-                },
-                {
-                    id: "2",
-                    sender: "me",
-                    message: "hi",
-                    date: new Date(),
-                },
-                {
-                    id: "3",
-                    sender: "me",
-                    message: "hi",
-                    date: new Date(),
-                },
-                {
-                    id: "4",
-                    sender: "me",
-                    message: "hi",
-                    date: new Date(),
-                },
-                {
-                    id: "5",
-                    sender: "me",
-                    message: "hi",
-                    date: new Date(),
-                },
-                {
-                    id: "6",
-                    sender: "me",
-                    message: "hi",
-                    date: new Date(),
-                }
-            ],
-            message: ""
-        }
+  name: "Room",
+  data() {
+    return {
+      chats: [
+        {
+          id: "1",
+          sender: "me",
+          message: "hi",
+          date: new Date(),
+        },
+        {
+          id: "2",
+          sender: "me",
+          message: "hi",
+          date: new Date(),
+        },
+        {
+          id: "3",
+          sender: "me",
+          message: "hi",
+          date: new Date(),
+        },
+        {
+          id: "4",
+          sender: "me",
+          message: "hi",
+          date: new Date(),
+        },
+        {
+          id: "5",
+          sender: "me",
+          message: "hi",
+          date: new Date(),
+        },
+        {
+          id: "6",
+          sender: "me",
+          message: "hi",
+          date: new Date(),
+        },
+      ],
+      message: "",
+    };
+  },
+  methods: {
+    exit() {
+      store.commit("Logout");
+      this.$router.push("/");
     },
-    methods: {
-        exit() {
-            store.commit('Logout')
-            this.$router.push("/")
-        }
-    },
-    mounted: {
-        // TODO: request for all messages
-    }
-}
+  },
+  mounted() {
+    // TODO: request for all messages
+  },
+};
+
+// to create a connection to a nats-server:
+const nc = connect({ servers: "demo.nats.io:4222" });
+
+// create a codec
+const sc = StringCodec();
+// create a simple subscriber and iterate over messages
+// matching the subscription
+const sub = nc.subscribe("hello");
+(async () => {
+  for await (const m of sub) {
+    console.log(`[${sub.getProcessed()}]: ${sc.decode(m.data)}`);
+  }
+  console.log("subscription closed");
+})();
+
+nc.publish("hello", sc.encode("world"));
+nc.publish("hello", sc.encode("again"));
+
+// we want to insure that messages that are in flight
+// get processed, so we are going to drain the
+// connection. Drain is the same as close, but makes
+// sure that all messages in flight get seen
+// by the iterator. After calling drain on the connection
+// the connection closes.
+nc.drain();
 </script>
 
 <style scoped>
 .main-panel {
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    width: 80%;
-    margin: 10px auto;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  width: 80%;
+  margin: 10px auto;
 }
 
 .holder {
-    height: 500px;
-    overflow: scroll;
+  height: 500px;
+  overflow: scroll;
 }
 
 .row {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    text-align: left;
-    border-bottom: 1px solid gainsboro;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: left;
+  border-bottom: 1px solid gainsboro;
 }
 
 .circle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30px;
-    height: 30px;
-    background: rgb(0, 64, 99);
-    color: #fff;
-    border-radius: 50%;
-    margin-right: 10px;
-    font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: rgb(0, 64, 99);
+  color: #fff;
+  border-radius: 50%;
+  margin-right: 10px;
+  font-size: 12px;
 }
 
 .full-flex {
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
 }
 
 .small-text {
-    font-size: 0.5em;
+  font-size: 0.5em;
 }
 
 .input-line {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
 input {
-    flex-grow: 2;
-    padding: 10px;
-    outline: none;
-    border: 1px solid gainsboro;
+  flex-grow: 2;
+  padding: 10px;
+  outline: none;
+  border: 1px solid gainsboro;
 }
 
-input:hover, input:focus {
-    border: 1px solid gray;
+input:hover,
+input:focus {
+  border: 1px solid gray;
 }
 
-.send, .exit {
-    border: 0px solid black;
-    outline: none;
+.send,
+.exit {
+  border: 0px solid black;
+  outline: none;
 }
 
 .send {
-    border: 1px solid rgb(0, 64, 99);
-    background: rgb(0, 64, 99);
-    color: #fff;
+  border: 1px solid rgb(0, 64, 99);
+  background: rgb(0, 64, 99);
+  color: #fff;
 }
 
 .send:hover {
-    border-color: rgb(0, 52, 80);
-    background: rgb(0, 52, 80);
+  border-color: rgb(0, 52, 80);
+  background: rgb(0, 52, 80);
 }
 
 .exit {
-    border: 1px solid rgb(140, 0, 0);
-    background: rgb(140, 0, 0);
-    color: #fff;
+  border: 1px solid rgb(140, 0, 0);
+  background: rgb(140, 0, 0);
+  color: #fff;
 }
 
 .exit:hover {
-    border-color: rgb(100, 0, 0);
-    background: rgb(100, 0, 0);
+  border-color: rgb(100, 0, 0);
+  background: rgb(100, 0, 0);
 }
 </style>
