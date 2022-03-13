@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:3000/api/publish";
+const URL = process.env.TELEGRAPH_CLIENT + "/api/publish";
 
 function publish(username, message, jwt) {
     const data = {
@@ -14,18 +14,14 @@ function publish(username, message, jwt) {
             'jwt-token': jwt
         }
     };
-    let status = false;
 
     axios.post(URL, data, axiosConfig)
         .then((response) => {
             console.log(response)
-            status = true
         })
         .catch((error) => {
             console.error(error)
         })
-
-    return status
 }
 
 export default publish

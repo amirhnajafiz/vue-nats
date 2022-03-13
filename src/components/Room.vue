@@ -49,15 +49,13 @@ export default {
       window.location.reload();
     },
     send() {
-      let res = publish(this.$store.getters.userName, this.message, this.$store.getters.getJwt)
-      if (!res) {
-        alert("failed to send message")
-      }
+      publish(this.$store.getters.userName, this.message, this.$store.getters.getJwt)
     }
   },
   mounted() {
     // getting the old messages from db
-    this.chats = suppress(this.$store.getters.userName, this.$store.getters.getJwt)
+    suppress(this.$store.getters.userName, this.$store.getters.getJwt)
+    this.chats = this.$store.getters.getChats
 
     // subscribe to all server IDs
     this.$nats.subscribe(process.env.NATS_TOPIC, (event) => {

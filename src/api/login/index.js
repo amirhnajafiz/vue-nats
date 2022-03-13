@@ -1,7 +1,7 @@
 import axios from "axios";
 import store from "../../store"
 
-const URL = "http://localhost:3000/api/join";
+const URL = process.env.TELEGRAPH_CLIENT + "/api/join";
 
 function login(username, password) {
     const data = {

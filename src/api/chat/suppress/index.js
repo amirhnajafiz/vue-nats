@@ -1,9 +1,9 @@
 import axios from "axios";
+import store from "../../../store"
 
-let URL = "http://localhost:3000/api/suppress";
+let URL = process.env.TELEGRAPH_CLIENT + "/api/suppress";
 
 function allChats(username, jwt) {
-    let data = undefined;
     const axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
@@ -15,14 +15,14 @@ function allChats(username, jwt) {
     axios.get(URL, axiosConfig)
         .then(response => {
             console.log(response)
-            data = response;
+            store.commit('Setup', {
+                'flag': true,
+                'data': response.data
+            })
         })
         .catch(err => {
             console.error(err);
-            data = []
         })
-    
-    return data
 }
 
 export default allChats
