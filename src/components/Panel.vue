@@ -41,7 +41,6 @@ export default {
             document.getElementById("password").innerText = "";
         },
         join() {
-            // TODO: check the login method
             let res = login(this.username, this.password)
             if (res.status) {
                 store.commit('Login', this.username, res.jwt)
