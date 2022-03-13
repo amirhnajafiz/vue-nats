@@ -3,11 +3,11 @@ import axios from "axios";
 const URL = "localhost:8080/api/publish";
 
 function publish(username, message, jwt) {
-    let data = {
+    const data = {
         'sender': username,
         'message': message
     };
-    let axiosConfig = {
+    const axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
             'jwt-token': jwt

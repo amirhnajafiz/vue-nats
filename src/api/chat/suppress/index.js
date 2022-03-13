@@ -4,7 +4,7 @@ let URL = "localhost:8080/api/suppress";
 
 function allChats(username, jwt) {
     let data = undefined;
-    let axiosConfig = {
+    const axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
             'jwt-token': jwt
