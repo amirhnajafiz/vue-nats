@@ -83,6 +83,7 @@ export default {
     exit() {
       this.$store.commit("LogOut");
       this.$router.push("/");
+      window.location.reload();
     },
     send() {
       let res = publish(this.$store.getters.userName, this.message, this.$store.getters.getJwt)
