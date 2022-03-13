@@ -3,7 +3,7 @@
       <div class="row">
           <div class="form-row"> 
               <label for="name">Name</label>
-              <input id="name" type="text" v-model="username" placeholder="Amirhossein ..." />
+              <input id="name" type="text" v-model="username" placeholder="Name ..." />
           </div>
           <div class="form-row">
               <label for="password">Password</label>
@@ -57,8 +57,7 @@ export default {
 /* TODO: css refactor and rename */
 .panel-container {
     width: 50%;
-    margin: 10px auto;
-    margin-top: 80px;
+    margin: 80px auto 10px;
 }
 
 .row {
@@ -104,7 +103,7 @@ input:hover, input:focus {
     padding: 10px;
     width: 100px;
     outline: none;
-    border: 0px solid black;
+    border: 0 solid black;
     border-radius: 5px;
 }
 
