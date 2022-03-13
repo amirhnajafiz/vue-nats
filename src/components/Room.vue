@@ -23,7 +23,7 @@
       </div>
       <div class="input-line">
         <input type="text" v-model="message" placeholder="Type something ..." />
-        <button class="send">Send</button>
+        <button v-on:click="send()" class="send">Send</button>
         <button v-on:click="exit()" class="exit">Exit room</button>
       </div>
     </div>
@@ -31,8 +31,6 @@
 </template>
 
 <script>
-import store from "../store";
-
 export default {
   name: "Room",
   data() {
@@ -80,15 +78,18 @@ export default {
   },
   methods: {
     exit() {
-      store.commit("Logout");
+      this.$store.commit("LogOut");
       this.$router.push("/");
     },
+    send() {
+      // TODO: publish
+    }
   },
   mounted() {
     // TODO: request for all messages
     
     // subscribe to all server IDs
-    this.$nats.subscribe('topic', (event) => {
+    this.$nats.subscribe(process.env.NATS_TOPIC, (event) => {
       console.log('Server reading:', event);
       this.chats.append(event)
     });
@@ -166,7 +167,7 @@ input:focus {
 
 .send,
 .exit {
-  border: 0px solid black;
+  border: 0 solid black;
   outline: none;
 }
 

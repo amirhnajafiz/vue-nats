@@ -2,7 +2,7 @@
   <div>
       <!-- chat page -->
       <h1>
-        Welcome to the Room
+        Welcome to the Room {{ this.$store.getters.userName }}
       </h1>
       <room />
   </div>
