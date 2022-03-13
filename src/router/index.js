@@ -3,31 +3,33 @@ import store from '../store'
 import Login from "../containers/Login"
 import Chat from "../containers/Chat"
 
-// TODO: comments and documentatons please
+// client routes
 const routes = [
     {
-        path: "/",
+        path: "/",     // home route
         component: Login
     },
     {
-        path: "/chat",
+        path: "/chat", // chat route that sends user to chat room
         component: Chat,
-        meta: {requiresAuth: true},
+        meta: {requiresAuth: true}, // this route needs authentication
     }
 ]
 
+// vue router
 const router = createRouter({
     history: createWebHashHistory(),
     routes,
 })
 
+// do the authentication before each route changing
 router.beforeEach((to, from, next) => {
     if(to.matched.some(record => record.meta.requiresAuth)) {
       if (store.getters.isAuthenticated) {
         next()
         return
       }
-      next()
+      next('/') // return to home page
     } else {
       next()
     }
