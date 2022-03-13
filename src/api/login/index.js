@@ -7,16 +7,12 @@ function login(username, password) {
         "username": username,
         "password": password
     };
-
-    console.log(data);
-
     const res = {
         "status": false,
         "jwt": null
     }
 
-    axios
-      .post(URL, data)
+    axios.post(URL, data)
       .then(response => {
           console.log(response.data)
           res.status = true
@@ -27,7 +23,7 @@ function login(username, password) {
           console.log("Problem in logging in")
       })
     
-      return res
+    return res
 }
 
 export default login

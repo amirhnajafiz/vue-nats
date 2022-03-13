@@ -1,16 +1,19 @@
 import axios from "axios";
 
-let URL = "";
+let URL = "localhost:8080/api/suppress";
 
-// TODO: set a request to get all of the messages from db
 function allChats(username, jwt) {
-    URL = URL + '?' + 'username=' + username + '&' + 'jwt=' + jwt;
-
     let data = undefined;
+    let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+            'jwt-token': jwt
+        }
+    };
 
-    axios.get(URL)
+    axios.get(URL, axiosConfig)
         .then(response => {
-            console.log("OK")
+            console.log(response)
             data = response;
         })
         .catch(err => {
