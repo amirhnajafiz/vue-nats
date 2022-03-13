@@ -32,6 +32,7 @@
 
 <script>
 import publish from '../api/chat/publish'
+import suppress from '../api/chat/suppress'
 
 export default {
   name: "Room",
@@ -91,8 +92,9 @@ export default {
     }
   },
   mounted() {
-    // TODO: request for all messages
-    
+    // getting the old messages from db
+    this.chats = suppress(this.$store.getters.userName, this.$store.getters.getJwt)
+
     // subscribe to all server IDs
     this.$nats.subscribe(process.env.NATS_TOPIC, (event) => {
       console.log('Server reading:', event);

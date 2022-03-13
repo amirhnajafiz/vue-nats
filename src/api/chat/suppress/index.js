@@ -18,6 +18,7 @@ function allChats(username, jwt) {
         })
         .catch(err => {
             console.error(err);
+            data = []
         })
     
     return data
