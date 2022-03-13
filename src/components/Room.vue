@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import publish from '../api/chat/publish'
+
 export default {
   name: "Room",
   data() {
@@ -82,7 +84,10 @@ export default {
       this.$router.push("/");
     },
     send() {
-      // TODO: publish
+      let res = publish(this.$store.getters.userName, this.message, this.$store.getters.getJwt)
+      if (!res) {
+        alert("failed to send message")
+      }
     }
   },
   mounted() {

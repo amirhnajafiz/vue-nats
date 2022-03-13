@@ -20,6 +20,7 @@ const mutations = {
 const getters = {
     isAuthenticated: state => !!state.jwt,
     userName: state => state.user,
+    getJwt: state => state.jwt,
 };
 
 // no actions needed
