@@ -7,6 +7,6 @@
  */
 module.exports = {
     devServer: {
-        proxy: 'http://localhost:8080/' // Setting the proxy to connect to our backend
+        proxy: process.env.TELEGRAPH_HOST // Setting the proxy to connect to our backend
     }
 }

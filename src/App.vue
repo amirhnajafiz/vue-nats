@@ -6,32 +6,19 @@
 </template>
 
 <script>
-// TODO: refactor the whole app
-import login from "./api/login";
 import Navigation from "./components/Navigation.vue";
 
 export default {
   components: { Navigation },
   name: "App",
-  data() {
-    return {
-      info: "test",
-    };
-  },
-  created() {
-    login(this.info, this.info);
-  },
 };
 </script>
 
 <style>
-#app {
+* {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 
 .container {
