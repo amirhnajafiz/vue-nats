@@ -1,23 +1,30 @@
 import axios from "axios";
 
-let URL = "";
+const URL = "localhost:8080/api/publish";
 
-// TODO: set a url for message sending over nats
-function publish(username, jwt) {
-    URL = URL + '?' + 'username=' + username + '&' + 'jwt=' + jwt;
+function publish(username, message, jwt) {
+    let data = {
+        'sender': username,
+        'message': message
+    };
+    let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+            'jwt-token': jwt
+        }
+    };
+    let status = false;
 
-    let data = undefined;
-
-    axios.get(URL)
-        .then(response => {
-            console.log("OK")
-            data = response;
+    axios.post(URL, data, axiosConfig)
+        .then((response) => {
+            console.log(response)
+            status = true
         })
-        .catch(err => {
-            console.error(err);
+        .catch((error) => {
+            console.error(error)
         })
-    
-    return data
+
+    return status
 }
 
 export default publish
