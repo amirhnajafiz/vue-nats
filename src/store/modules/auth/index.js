@@ -6,7 +6,7 @@ const state = {
 
 // authentication mutations
 const mutations = {
-    Login(state, username, jwt){
+    Login(state, {username, jwt}){
         state.user = username
         state.jwt = jwt
     },
@@ -18,7 +18,7 @@ const mutations = {
 
 // authentication getters
 const getters = {
-    isAuthenticated: state => !!state.jwt,
+    isAuthenticated: state => state.jwt !== null,
     userName: state => state.user,
     getJwt: state => state.jwt,
 };
