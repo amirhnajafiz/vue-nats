@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "localhost:8080/join";
+const URL = "localhost:3000/api/join";
 
 function login(username, password) {
     const data = {
