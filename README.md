@@ -1,4 +1,6 @@
-# telegraph
+# Telegraph-Frontend
+
+This is a vue-client to test our telegraph service.
 
 ## Project setup
 ```
