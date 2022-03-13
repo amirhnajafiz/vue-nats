@@ -38,44 +38,7 @@ export default {
   name: "Room",
   data() {
     return {
-      chats: [
-        {
-          id: "1",
-          sender: "me",
-          message: "hi",
-          date: new Date(),
-        },
-        {
-          id: "2",
-          sender: "me",
-          message: "hi",
-          date: new Date(),
-        },
-        {
-          id: "3",
-          sender: "me",
-          message: "hi",
-          date: new Date(),
-        },
-        {
-          id: "4",
-          sender: "me",
-          message: "hi",
-          date: new Date(),
-        },
-        {
-          id: "5",
-          sender: "me",
-          message: "hi",
-          date: new Date(),
-        },
-        {
-          id: "6",
-          sender: "me",
-          message: "hi",
-          date: new Date(),
-        },
-      ],
+      chats: [],
       message: "",
     };
   },
@@ -106,7 +69,6 @@ export default {
 </script>
 
 <style scoped>
-/* TODO: refactor and rename css styles */
 .main-panel {
   background-color: #fff;
   padding: 10px;

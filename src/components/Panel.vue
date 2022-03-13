@@ -51,8 +51,7 @@ export default {
 }
 </script>
 
-<style scoped> 
-/* TODO: css refactor and rename */
+<style scoped>
 .panel-container {
     width: 50%;
     margin: 80px auto 10px;
