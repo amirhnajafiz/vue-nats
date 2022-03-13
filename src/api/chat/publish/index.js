@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "localhost:8080/api/publish";
+const URL = "http://localhost:3000/api/publish";
 
 function publish(username, message, jwt) {
     const data = {
@@ -10,6 +10,7 @@ function publish(username, message, jwt) {
     const axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
             'jwt-token': jwt
         }
     };

@@ -1,12 +1,13 @@
 import axios from "axios";
 
-let URL = "localhost:8080/api/suppress";
+let URL = "http://localhost:3000/api/suppress";
 
 function allChats(username, jwt) {
     let data = undefined;
     const axiosConfig = {
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
             'jwt-token': jwt
         }
     };
