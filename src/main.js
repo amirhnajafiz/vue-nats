@@ -1,7 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import axios from 'axios'
-import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 import router from './router'
 import store from './store'
 import vueNats from 'vue-nats';
@@ -11,9 +10,6 @@ const app = createApp(App)
 // router and store
 app.use(router)
 app.use(store)
-// vue plugins
-app.use(BootstrapVue)
-app.use(IconsPlugin)
 // app mounting
 app.mount('#app')
 

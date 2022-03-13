@@ -1,7 +1,7 @@
 <template>
   <div>
       <!-- chat page -->
-      <h1>
+      <h1 style="text-align: center;">
         Welcome to the Room {{ username }}
       </h1>
       <room />
