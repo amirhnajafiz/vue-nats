@@ -2,24 +2,18 @@
 
 This is a vue-client to test our telegraph service.
 
+<img src="./assets/root.png"  alt="root page" />
+<img src="./assets/room.png"  alt="room page" />
+
 ## Project setup
+Install node modules:
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+Run client:
+```angular2html
+make dev
 ```
 
 ### Customize configuration
