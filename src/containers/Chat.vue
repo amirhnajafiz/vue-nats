@@ -18,7 +18,7 @@ export default {
     }
   },
   components: { Room },
-  created() {
+  mounted() {
     this.username = this.$store.getters.userName;
   }
 }
