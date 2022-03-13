@@ -1,9 +1,10 @@
-// TODO: refactor and comment and documentations
+// authentication state
 const state = {
-    user: null,
-    jwt: null,
+    user: null, // username
+    jwt: null,  // jwt token
 };
 
+// authentication mutations
 const mutations = {
     Login(state, username, jwt){
         state.user = username
@@ -15,14 +16,14 @@ const mutations = {
     },
 };
 
+// authentication getters
 const getters = {
     isAuthenticated: state => !!state.jwt,
     userName: state => state.user,
 };
 
-const actions = {
-
-};
+// no actions needed
+const actions = {};
 
 export default {
   state,
