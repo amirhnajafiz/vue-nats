@@ -19,9 +19,9 @@ axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 // nats config
 app.use(vueNats, {
-    url: process.env.NATS_HOST,
+    url: 'ws://0.0.0.0:4222',
     json: true, // use JSON data payload
-    reconnect: false, // always reconnect
+    reconnect: true, // always reconnect
     maxReconnectAttempts: -1, // retry forever
     reconnectTimeWait: -1 // try to reconnect every second
 });
