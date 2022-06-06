@@ -3,7 +3,7 @@ import App from './App.vue'
 import axios from 'axios'
 import router from './router'
 import store from './store'
-import vueNats from 'vue-nats';
+import { connect, StringCodec } from "nats";
 
 // creating a vue app
 const app = createApp(App)
@@ -17,11 +17,20 @@ app.mount('#app')
 axios.defaults.headers.common['Content-Type'] ='application/x-www-form-urlencoded';
 axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
-// nats config
-app.use(vueNats, {
-    url: 'ws://0.0.0.0:4222',
-    json: true, // use JSON data payload
-    reconnect: true, // always reconnect
-    maxReconnectAttempts: -1, // retry forever
-    reconnectTimeWait: -1 // try to reconnect every second
-});
+(async () => {
+    // nats connect and testing
+    let conn = await connect(
+        {
+            servers: ["ws://localhost:4222"],
+        },
+    );
+
+    let sub = conn.subscribe("*");
+    const sc = StringCodec();
+
+    for await (const m of sub) {
+        console.log(`[${sub.getProcessed()}]: ${sc.decode(m.data)}`);
+    }
+
+    console.log("subscription closed");
+})();
