@@ -76,10 +76,7 @@ export default {
     this.chats = this.$store.getters.getChats
 
     // subscribe to all server IDs
-    this.$nats.subscribe(process.env.NATS_TOPIC, (event) => {
-      console.log('Server reading:', event);
-      this.chats.append(event)
-    });
+
   },
 };
 </script>
