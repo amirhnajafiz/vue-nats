@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "ChatBox"
+  name: "EventBox"
 }
 </script>
 
