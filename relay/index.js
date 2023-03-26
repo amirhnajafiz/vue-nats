@@ -1,4 +1,5 @@
-const nats = require('nats');
+// import internals
+const natsUtils = require('./utils/nats');
 const config = require('./config/config');
 
 
@@ -10,30 +11,19 @@ cluster = [
     {servers: cfg.nats}
 ];
 
-// connect to nats server
-async function connect() {
-    try {
-        // calling the nats connect method with
-        // clusters information
-        const nc = await nats.connect(cluster);
-
-        // get the connected servers
-        console.log(`connected to ${ nc.getServer() }`);
-
-        return nc;
-    } catch (err) {
-        // if an error occurs during the nats connecting
-        console.error(`error connecting to ${JSON.stringify(this.server)}`);
-        console.error(err);
-
-        return null;
-    }
-}
-
 // first we connect to nats server
-const nc = await connect();
+const nc = await natsUtils.connect();
 if (nc === null) {
     console.error("Nats connection failed");
 
     return;
+}
+
+// subscribe handler for getting the messages
+async function handler(sub) {
+    for await (const m of sub) {
+        console.log(`[${sub.getProcessed()}]: ${sc.decode(m.data)}`);
+    }
+
+    console.log("subscription closed");
 }
