@@ -8,3 +8,9 @@
 .container {
   margin: 20px 40px;
 }
+
+.row {
+  display: block;
+  width: 100%;
+  clear: both;
+}
