@@ -4,7 +4,7 @@ import EventBox from "../components/EventBox.vue";
 
 <template>
   <div class="container">
-    <h1>
+    <h1 class="title">
       Vue-Nats
     </h1>
     <EventBox
@@ -20,6 +20,11 @@ export default {
 </script>
 
 <style scoped>
+.title {
+  margin: 50px auto;
+  text-align: center;
+}
+
 .box {
   width: 50%;
   margin: 100px auto 0;
