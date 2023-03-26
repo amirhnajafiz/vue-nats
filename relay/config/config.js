@@ -9,4 +9,6 @@ class Config {
     }
 }
 
-export default Config;
+module.exports = {
+    Config
+}
