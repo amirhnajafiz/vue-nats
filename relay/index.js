@@ -1,5 +1,6 @@
 const config = require('./config/config')
 
-let cfg = new config.Config();
+// import configs
+const cfg = new config.Config();
 
-console.log(cfg.nats)
+console.log(cfg.nats);

@@ -1,6 +1,10 @@
+// import dotenv
 const dotenv = require('dotenv');
+
+// read configs
 dotenv.config();
 
+// create config class
 class Config {
     constructor() {
         this.port = process.env.PORT;
