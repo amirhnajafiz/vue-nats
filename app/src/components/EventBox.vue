@@ -1,7 +1,15 @@
 <template>
   <div>
     <div v-for="event in events">
-
+      <h4>
+        {{ event.sender }}
+      </h4>
+      <p>
+        {{ event.message }}
+      </p>
+      <small>
+        {{ event.time }}
+      </small>
     </div>
   </div>
 </template>
@@ -17,7 +25,7 @@ export default {
   methods: {
     addEvent() {
       let tmpEvent = {
-        title: "Event title",
+        message: "Event message",
         time: new Date(),
         sender: "me",
       };
