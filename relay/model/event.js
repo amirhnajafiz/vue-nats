@@ -23,3 +23,7 @@ class Event {
         return this;
     }
 }
+
+module.exports = {
+    Event
+}
