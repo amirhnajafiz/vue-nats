@@ -6,6 +6,7 @@ import Event from "./Event.vue";
   <div>
     <div v-for="event in events">
       <Event
+        class="row box-row"
         :payload="event.message"
         :time="event.time"
         :sender="event.sender"
@@ -43,5 +44,9 @@ export default {
 </script>
 
 <style scoped>
-
+.box-row {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid darkblue;
+}
 </style>
