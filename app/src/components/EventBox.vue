@@ -1,7 +1,15 @@
+<script setup>
+import Event from "./Event.vue";
+</script>
+
 <template>
   <div>
     <div v-for="event in events">
-
+      <Event
+        :payload="event.message"
+        :time="event.time"
+        :sender="event.sender"
+      />
     </div>
   </div>
 </template>
@@ -9,6 +17,7 @@
 <script>
 export default {
   name: "EventBox",
+  components: {Event},
   data() {
     return {
       events: [],
