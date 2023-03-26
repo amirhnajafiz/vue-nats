@@ -1,12 +1,19 @@
 <template>
   <div>
+    <div v-for="event in events">
 
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "EventBox"
+  name: "EventBox",
+  data() {
+    return {
+      events: [],
+    }
+  }
 }
 </script>
 
