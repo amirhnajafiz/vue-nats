@@ -21,7 +21,7 @@ async function main() {
     // first we connect to nats server
     const nc = await natsUtils.connect(cluster);
     if (nc === null) {
-        console.error("nats connection failed");
+        throw new Error("nats connection failed");
     }
 
     // create express app
@@ -29,7 +29,7 @@ async function main() {
     // initialize a simple http server
     const server = http.createServer(app);
     // initialize the WebSocket server instance
-    const wss = new WebSocket.Server({ server });
+    const wss = new ws.WebSocket.Server({ server });
 
     wss.on('connection', (ws) => {
         ws.on('message', (message) => {
@@ -41,7 +41,7 @@ async function main() {
 
     // start our server
     server.listen(cfg.port || 8999, () => {
-        console.log(`Server started on port ${server.address().port} :)`);
+        console.log(`server started on port ${server.address().port} ...`);
     });
 }
 
