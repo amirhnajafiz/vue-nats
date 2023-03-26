@@ -35,7 +35,9 @@ export default {
     }
   },
   mounted() {
-    this.addEvent();
+    for (let i = 0; i < 10; i++) {
+      this.addEvent();
+    }
   }
 }
 </script>

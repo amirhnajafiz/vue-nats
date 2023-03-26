@@ -7,16 +7,18 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
-    <h4>
-      {{ this.sender }}
-    </h4>
-    <p>
+  <div class="holder">
+    <div>
       {{ this.payload }}
-    </p>
-    <small>
-      {{ this.time }}
-    </small>
+    </div>
+    <div class="meta-holder">
+      <small>
+        Send by: {{ this.sender }}
+      </small>
+      <small>
+        at: {{ this.time }}
+      </small>
+    </div>
   </div>
 </template>
 
@@ -27,5 +29,13 @@ export default {
 </script>
 
 <style scoped>
+.holder {
+  display: flex;
+  flex-direction: column;
+}
 
+.meta-holder {
+  display: flex;
+  justify-content: space-between;
+}
 </style>
