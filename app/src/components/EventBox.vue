@@ -30,8 +30,11 @@ export default {
         sender: "me",
       };
 
-      this.events.add(tmpEvent);
+      this.events.push(tmpEvent);
     }
+  },
+  mounted() {
+    this.addEvent();
   }
 }
 </script>
