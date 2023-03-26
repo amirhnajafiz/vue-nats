@@ -1,0 +1,20 @@
+{
+  "name": "relay-server",
+  "version": "0.1.0",
+  "description": "Relay server for make a connection to nats cluster",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/amirhnajafiz/vue-nats"
+  },
+  "keywords": [
+    "nats",
+    "js",
+    "relay"
+  ],
+  "author": "amirhossein.najafizadeh21@gmail.com",
+  "license": "ISC"
+}
