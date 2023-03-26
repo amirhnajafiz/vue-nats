@@ -13,6 +13,17 @@ export default {
     return {
       events: [],
     }
+  },
+  methods: {
+    addEvent() {
+      let tmpEvent = {
+        title: "Event title",
+        time: new Date(),
+        sender: "me",
+      };
+
+      this.events.add(tmpEvent);
+    }
   }
 }
 </script>
