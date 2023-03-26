@@ -11,10 +11,13 @@ cluster = [
     {servers: cfg.nats}
 ];
 
-// first we connect to nats server
-const nc = await natsUtils.connect(cluster);
-if (nc === null) {
-    console.error("nats connection failed");
-
-    return;
+// main function
+async function main() {
+    // first we connect to nats server
+    const nc = await natsUtils.connect(cluster);
+    if (nc === null) {
+        console.error("nats connection failed");
+    }
 }
+
+main()
