@@ -16,5 +16,8 @@
     "relay"
   ],
   "author": "amirhossein.najafizadeh21@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
