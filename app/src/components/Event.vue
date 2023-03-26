@@ -8,9 +8,9 @@ const props = defineProps({
 
 <template>
   <div class="holder">
-    <div>
+    <p style="margin-bottom: 10px;">
       {{ this.payload }}
-    </div>
+    </p>
     <div class="meta-holder">
       <small>
         Send by: {{ this.sender }}
@@ -37,5 +37,6 @@ export default {
 .meta-holder {
   display: flex;
   justify-content: space-between;
+  font-size: 0.9rem;
 }
 </style>
