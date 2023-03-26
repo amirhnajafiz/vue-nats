@@ -7,7 +7,9 @@ import EventBox from "../components/EventBox.vue";
     <h1>
       Vue-Nats
     </h1>
-    <EventBox />
+    <EventBox
+        class="box"
+    />
   </div>
 </template>
 
@@ -18,5 +20,13 @@ export default {
 </script>
 
 <style scoped>
-
+.box {
+  width: 50%;
+  margin: 100px auto 0;
+  padding: 20px 40px;
+  border: 2px solid gainsboro;
+  border-radius: 5px;
+  height: 350px;
+  overflow: scroll;
+}
 </style>
