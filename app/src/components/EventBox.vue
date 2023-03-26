@@ -32,13 +32,15 @@ export default {
         sender: "me",
       };
 
-      this.events.push(tmpEvent);
+      this.events.unshift(tmpEvent);
+    },
+    simulate() {
+      this.addEvent();
+      setInterval(this.simulate, 2000);
     }
   },
   mounted() {
-    for (let i = 0; i < 10; i++) {
-      this.addEvent();
-    }
+    this.simulate();
   }
 }
 </script>
