@@ -3,7 +3,7 @@ import EventBox from "../components/EventBox.vue";
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <h1>
       Vue-Nats
     </h1>
