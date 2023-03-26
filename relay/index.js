@@ -12,18 +12,9 @@ cluster = [
 ];
 
 // first we connect to nats server
-const nc = await natsUtils.connect();
+const nc = await natsUtils.connect(cluster);
 if (nc === null) {
-    console.error("Nats connection failed");
+    console.error("nats connection failed");
 
     return;
-}
-
-// subscribe handler for getting the messages
-async function handler(sub) {
-    for await (const m of sub) {
-        console.log(`[${sub.getProcessed()}]: ${sc.decode(m.data)}`);
-    }
-
-    console.log("subscription closed");
 }
