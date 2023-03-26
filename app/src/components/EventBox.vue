@@ -1,15 +1,7 @@
 <template>
   <div>
     <div v-for="event in events">
-      <h4>
-        {{ event.sender }}
-      </h4>
-      <p>
-        {{ event.message }}
-      </p>
-      <small>
-        {{ event.time }}
-      </small>
+
     </div>
   </div>
 </template>
