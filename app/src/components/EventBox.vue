@@ -36,7 +36,7 @@ export default {
     },
     listenForEvents() {
       // open websocket on relay server
-      let ws = new WebSocket("ws://localhost:8080");
+      let ws = new WebSocket(import.meta.env.VITE_RELAY_SERVER);
 
       let self = this;
       ws.onmessage = function (event) {
