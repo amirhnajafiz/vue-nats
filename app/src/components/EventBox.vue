@@ -34,9 +34,13 @@ export default {
 
       this.events.unshift(tmpEvent);
     },
-    simulate() {
-      this.addEvent();
-      setInterval(this.simulate, 2000);
+    listenForEvents() {
+      const url = "ws://localhost:8999/"
+      let ws = new WebSocket(url);
+
+      ws.onmessage = function (event) {
+        console.log(JSON.parse(event.data))
+      }
     }
   },
   mounted() {
