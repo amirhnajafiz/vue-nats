@@ -4,9 +4,6 @@ import Event from "./Event.vue";
 
 <template>
   <div>
-    <button style="margin-bottom: 10px;" v-on:click="generate">
-      New
-    </button>
     <TransitionGroup name="list">
       <div v-for="event in events" :key="event.id">
         <Event
@@ -44,25 +41,21 @@ export default {
   },
   methods: {
     addEvent(event) {
-      //event.id = this.events.length;
+      event.id = this.events.length;
       this.events.splice(0, 0, event);
     },
     listenForEvents() {
       // open websocket on relay server
-      let ws = new WebSocket("ws://localhost:8080");
+      try {
+        let ws = new WebSocket("ws://localhost:8080");
 
-      let self = this;
-      ws.onmessage = function (event) {
-        self.addEvent(JSON.parse(event.data));
+        let self = this;
+        ws.onmessage = function (event) {
+          self.addEvent(JSON.parse(event.data));
+        }
+      } catch (e) {
+        console.error(e);
       }
-    },
-    generate() {
-      this.addEvent({
-        "message": "new",
-        "time": new Date(),
-        "sender": "me",
-        "id": this.events.length
-      })
     }
   },
   mounted() {
