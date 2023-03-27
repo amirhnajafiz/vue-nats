@@ -32,7 +32,7 @@ export default {
       // open websocket on relay server
       let ws = new WebSocket("ws://localhost:8080");
 
-      var self = this;
+      let self = this;
       ws.onmessage = function (event) {
         self.addEvent(JSON.parse(event.data));
       }
