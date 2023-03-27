@@ -21,7 +21,13 @@ export default {
   components: {Event},
   data() {
     return {
-      events: [],
+      events: [
+        {
+          "message": "hello",
+          "time": new Date(),
+          "sender": "Amir",
+        }
+      ],
     }
   },
   methods: {
@@ -47,7 +53,11 @@ export default {
 <style scoped>
 .box-row {
   margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid darkblue;
+  padding: 10px 20px;
+  background-color: aliceblue;
+  color: #163260;
+  border-radius: 30px;
+  max-width: 100%;
+  display: inline-block;
 }
 </style>

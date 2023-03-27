@@ -12,11 +12,11 @@ const props = defineProps({
       {{ this.payload }}
     </p>
     <div class="meta-holder">
-      <small>
+      <small style="margin-right: 20px;">
         Send by: {{ this.sender }}
       </small>
       <small>
-        at: {{ this.time }}
+        At: {{ this.time }}
       </small>
     </div>
   </div>
