@@ -5,9 +5,10 @@ import EventBox from "../components/EventBox.vue";
 <template>
   <div class="container">
     <h1 class="title">
-      Vue Nats
+      {{ message }}
     </h1>
     <EventBox
+        @connectionFailed="displayError"
         class="box"
     />
   </div>
@@ -16,6 +17,17 @@ import EventBox from "../components/EventBox.vue";
 <script>
 export default {
   name: "Home",
+  data() {
+    return {
+      message: "Vue Nats"
+    }
+  },
+  methods: {
+    displayError() {
+      this.message = "Server failed to respond!";
+      document.getElementsByTagName("body").item(0).style.background = "rgba(215,0,0,0.79)";
+    }
+  }
 }
 </script>
 

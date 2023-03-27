@@ -46,15 +46,14 @@ export default {
     },
     listenForEvents() {
       // open websocket on relay server
-      try {
-        let ws = new WebSocket("ws://localhost:8080");
+      let ws = new WebSocket("ws://localhost:8080");
 
-        let self = this;
-        ws.onmessage = function (event) {
-          self.addEvent(JSON.parse(event.data));
-        }
-      } catch (e) {
-        console.error(e);
+      let self = this;
+      ws.onmessage = function (event) {
+        self.addEvent(JSON.parse(event.data));
+      }
+      ws.onerror = function (err) {
+        self.$emit('connectionFailed');
       }
     }
   },
@@ -67,7 +66,7 @@ export default {
 <style scoped>
 .box-row {
   margin-bottom: 20px;
-  padding: 5px 18px;
+  padding: 7px 18px;
   background-color: aliceblue;
   color: #000000;
   border-radius: 4px 30px 30px 4px;
