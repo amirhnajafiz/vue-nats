@@ -23,6 +23,36 @@ export default {
     return {
       events: [
         {
+          "message": "hello world",
+          "time": new Date(),
+          "sender": "Reza",
+        },
+        {
+          "message": "hello mate, how are you",
+          "time": new Date(),
+          "sender": "Amir222",
+        },
+        {
+          "message": "hello there",
+          "time": new Date(),
+          "sender": "Amir",
+        },
+        {
+          "message": "Hi",
+          "time": new Date(),
+          "sender": "Fuck me",
+        },
+        {
+          "message": "hello",
+          "time": new Date(),
+          "sender": "Amir",
+        },
+        {
+          "message": "hello",
+          "time": new Date(),
+          "sender": "Amir",
+        },
+        {
           "message": "hello",
           "time": new Date(),
           "sender": "Amir",
@@ -53,10 +83,10 @@ export default {
 <style scoped>
 .box-row {
   margin-bottom: 20px;
-  padding: 10px 20px;
+  padding: 5px 18px;
   background-color: aliceblue;
-  color: #163260;
-  border-radius: 30px;
+  color: #000000;
+  border-radius: 4px 30px 30px 4px;
   max-width: 100%;
   display: inline-block;
 }

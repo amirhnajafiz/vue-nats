@@ -8,15 +8,15 @@ const props = defineProps({
 
 <template>
   <div class="holder">
-    <p style="margin-bottom: 10px;">
+    <p>
       {{ this.payload }}
     </p>
     <div class="meta-holder">
-      <small style="margin-right: 20px;">
+      <small style="margin-right: 25px;">
         Send by: {{ this.sender }}
       </small>
       <small>
-        At: {{ this.time }}
+        At: {{ this.time.toLocaleString() }}
       </small>
     </div>
   </div>
@@ -37,6 +37,7 @@ export default {
 .meta-holder {
   display: flex;
   justify-content: space-between;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
+  color: #b4b4b4;
 }
 </style>
