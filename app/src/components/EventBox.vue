@@ -4,7 +4,7 @@ import Event from "./Event.vue";
 
 <template>
   <div>
-    <TransitionGroup name="list">
+    <TransitionGroup v-if="events.length > 0" name="list">
       <div v-for="event in events" :key="event.id">
         <Event
             class="row box-row"
@@ -14,6 +14,9 @@ import Event from "./Event.vue";
         />
       </div>
     </TransitionGroup>
+    <div v-else>
+      No events!
+    </div>
   </div>
 </template>
 
@@ -23,20 +26,7 @@ export default {
   components: {Event},
   data() {
     return {
-      events: [
-        {
-          "id": 0,
-          "message": "hello world",
-          "time": new Date(),
-          "sender": "Reza",
-        },
-        {
-          "id": 1,
-          "message": "hello mate, how are you",
-          "time": new Date(),
-          "sender": "Amir222",
-        }
-      ],
+      events: []
     }
   },
   methods: {
