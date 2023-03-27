@@ -5,6 +5,11 @@
   font-family: Tahoma, serif;
 }
 
+body {
+  background-color: rgba(37, 69, 130, 0.87);
+  color: aliceblue;
+}
+
 .container {
   margin: 20px 40px;
 }
