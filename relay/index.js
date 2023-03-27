@@ -34,7 +34,11 @@ async function main() {
 
     // open websocket
     wss.on('connection', async (ws) => {
-        ws.send(JSON.stringify({"message": "hello"}));
+        ws.send(JSON.stringify({
+            "message": "Relay server",
+            "time": new Date(),
+            "sender": "localhost:8080"
+        }));
 
         return
 

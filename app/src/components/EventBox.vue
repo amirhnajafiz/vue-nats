@@ -8,7 +8,7 @@ import Event from "./Event.vue";
       <Event
         class="row box-row"
         :payload="event.message"
-        :time="event.time"
+        :time="new Date(event.time)"
         :sender="event.sender"
       />
     </div>
@@ -25,21 +25,16 @@ export default {
     }
   },
   methods: {
-    addEvent() {
-      let tmpEvent = {
-        message: "Event message",
-        time: new Date(),
-        sender: "me",
-      };
-
-      this.events.unshift(tmpEvent);
+    addEvent(event) {
+      this.events.unshift(event);
     },
     listenForEvents() {
       // open websocket on relay server
       let ws = new WebSocket("ws://localhost:8080");
 
+      var self = this;
       ws.onmessage = function (event) {
-        console.log(JSON.parse(event.data))
+        self.addEvent(JSON.parse(event.data));
       }
     }
   },
