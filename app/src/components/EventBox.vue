@@ -36,9 +36,7 @@ export default {
     },
     listenForEvents() {
       // open websocket on relay server
-      console.log(import.meta.env);
-      console.log(import.meta.env.VUE_APP_RELAY_SERVER);
-      let ws = new WebSocket(import.meta.env.VUE_APP_RELAY_SERVER);
+      let ws = new WebSocket("ws://localhost:8080");
 
       ws.onmessage = function (event) {
         console.log(JSON.parse(event.data))
