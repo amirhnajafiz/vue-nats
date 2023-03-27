@@ -7,7 +7,7 @@ import Event from "./Event.vue";
     <button style="margin-bottom: 10px;" v-on:click="generate">
       New
     </button>
-    <TransitionGroup name="list" tag="div">
+    <TransitionGroup name="list">
       <div v-for="event in events" :key="event.id">
         <Event
             class="row box-row"
@@ -44,6 +44,7 @@ export default {
   },
   methods: {
     addEvent(event) {
+      //event.id = this.events.length;
       this.events.splice(0, 0, event);
     },
     listenForEvents() {
@@ -81,12 +82,13 @@ export default {
   display: inline-block;
 }
 
-.list-enter-active, .list-leave-active {
-  transition: all 1s;
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s ease;
 }
-
-.list-enter, .list-leave-to {
+.list-enter-from,
+.list-leave-to {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateX(30px);
 }
 </style>
