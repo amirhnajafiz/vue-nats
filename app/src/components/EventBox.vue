@@ -36,7 +36,9 @@ export default {
     },
     listenForEvents() {
       // open websocket on relay server
-      let ws = new WebSocket(process.env.RELAY_SERVER);
+      console.log(import.meta.env);
+      console.log(import.meta.env.VUE_APP_RELAY_SERVER);
+      let ws = new WebSocket(import.meta.env.VUE_APP_RELAY_SERVER);
 
       ws.onmessage = function (event) {
         console.log(JSON.parse(event.data))
@@ -44,7 +46,7 @@ export default {
     }
   },
   mounted() {
-    this.simulate();
+    this.listenForEvents();
   }
 }
 </script>

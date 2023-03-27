@@ -34,6 +34,10 @@ async function main() {
 
     // open websocket
     wss.on('connection', async (ws) => {
+        ws.send(JSON.stringify({"message": "hello"}));
+
+        return
+
         // subscribing on a topic
         const sub = nc.subscribe(cfg.topic);
 
