@@ -8,7 +8,7 @@ async function connect(cluster) {
         const nc = await nats.connect(cluster);
 
         // get the connected servers
-        console.log(`connected to ${ nc.getServer() }`);
+        console.log(`connected to nats clusters: ${ nc.getServer() }`);
 
         return nc;
     } catch (err) {

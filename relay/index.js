@@ -54,7 +54,7 @@ async function main() {
 // start index
 main()
     .then(() => {
-        console.log("OK");
+        console.log("server is ok!");
     })
     .catch(err => {
         console.error(err);
