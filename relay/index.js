@@ -34,22 +34,12 @@ async function main() {
 
     // open websocket
     wss.on('connection', async (ws) => {
-        ws.send(JSON.stringify({
-            "message": "Relay server",
-            "time": new Date(),
-            "sender": "localhost:8080"
-        }));
-
-        return
-
         // subscribing on a topic
         const sub = nc.subscribe(cfg.topic);
 
         // consume events and send over websocket
         for await (const m of sub) {
-            let payload = sc.decode(m.data);
-            console.log(`[${sub.getProcessed()}]: ${payload}`);
-            ws.send(payload);
+            ws.send(sc.decode(m.data));
         }
     });
 
