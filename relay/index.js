@@ -3,6 +3,7 @@ const natsUtils = require('./utils/nats');
 const config = require('./config/config');
 
 // import externals
+const sc = require('nats').StringCodec();
 const express = require('express');
 const http = require('http');
 const ws = require('ws');
@@ -32,12 +33,16 @@ async function main() {
     const wss = new ws.WebSocket.Server({ server });
 
     // open websocket
-    wss.on('connection', (ws) => {
-        ws.on('message', (message) => {
-            console.log('received: %s', message);
-            ws.send(`Hello, you sent -> ${message}`);
-        });
-        ws.send('Hi there, I am a WebSocket server');
+    wss.on('connection', async (ws) => {
+        // subscribing on a topic
+        const sub = nc.subscribe(cfg.topic);
+
+        // consume events and send over websocket
+        for await (const m of sub) {
+            let payload = sc.decode(m.data);
+            console.log(`[${sub.getProcessed()}]: ${payload}`);
+            ws.send(payload);
+        }
     });
 
     // start our server
