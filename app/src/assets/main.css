@@ -16,5 +16,5 @@ body {
 
 .row {
   display: block;
-  clear: both;
+  clear: both !important;
 }
