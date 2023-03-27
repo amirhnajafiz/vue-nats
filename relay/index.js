@@ -31,6 +31,7 @@ async function main() {
     // initialize the WebSocket server instance
     const wss = new ws.WebSocket.Server({ server });
 
+    // open websocket
     wss.on('connection', (ws) => {
         ws.on('message', (message) => {
             console.log('received: %s', message);
