@@ -35,8 +35,8 @@ export default {
       this.events.unshift(tmpEvent);
     },
     listenForEvents() {
-      const url = "ws://localhost:8999/"
-      let ws = new WebSocket(url);
+      // open websocket on relay server
+      let ws = new WebSocket(process.env.RELAY_SERVER);
 
       ws.onmessage = function (event) {
         console.log(JSON.parse(event.data))
