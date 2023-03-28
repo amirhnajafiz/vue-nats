@@ -1,1 +1,22 @@
 version: "3.9"
+services:
+  app:
+    container_name: node-app
+    build:
+      context: app
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+  relay:
+    container_name: relay-server
+    build:
+      context: relay
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+  nats:
+    container_name: nats-cluster
+    image: nats:latest
+    entrypoint: /nats-server
+    ports:
+      - "4222:4222"
