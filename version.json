@@ -2,5 +2,5 @@
   "node": "v18.15.0",
   "npm": "9.5.0",
   "vue": "v3",
-  "inherit": true
+  "compose": "v3.9"
 }
